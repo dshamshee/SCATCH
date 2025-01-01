@@ -31,8 +31,9 @@ if(process.env.NODE_ENV === "development"){ // It checks if the project is in de
 
 
 
-router.get('/', function(req, res){
-    res.send("Hey it's working");
+router.get('/admin', function(req, res){
+  let success = req.flash("Successs");
+  res.render("createproducts", {success}); // success is temporary isko dekh lena 
 })
 
 
