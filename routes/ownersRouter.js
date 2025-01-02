@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router(); 
 const ownerModel = require('../models/owner-model');
 
+
 // These routes are only work when the project on development mode
 if(process.env.NODE_ENV === "development"){ // It checks if the project is in development mode or Production mode
     router.post('/create', async function(req, res){
-
-      // It checks if any one Owner is already exist then don't create another Owner 
+      // console.log("Under development");
+      try {
+        // It checks if any one Owner is already exist then don't create another Owner 
       let owners = await  ownerModel.find();
       if(owners.length > 0){
         return res
@@ -22,7 +24,12 @@ if(process.env.NODE_ENV === "development"){ // It checks if the project is in de
             email,
             password
         })
+        // console.log("Owner created successfully");
         res.status(201).send(createdOwner); 
+      } catch (err) {
+        console.log(err.message());
+        // console.log("not created");
+      }
       
     })
 }
