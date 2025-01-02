@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/stylesheets/input.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
 <body class="font-['helvetica_now_display']">
@@ -17,10 +18,12 @@
         <% if(loggedin){ %>
             
             <div class="flex gap-5">
-                <a href="">Shop</a>
-                <a href="">Cart</a>
-                <a href="">My Account</a>
+                <a href="/shop">Shop</a>
+                <a href="/cart">Cart</a>
+                <a href="#">My Account</a>
                 <a class="text-red-600" href="/users/logout">Logout</a>
             </div>
        <% } %>
     </nav>
+
+
