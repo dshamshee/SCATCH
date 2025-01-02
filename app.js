@@ -30,7 +30,7 @@ app.set('view engine', 'ejs');
 
 
 
-app.use('/', indexRouter);
+app.use('/', indexRouter); // ./router/index.js
 app.use('/owners', ownersRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);

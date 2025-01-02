@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -24,6 +24,44 @@
                 <a class="text-red-600" href="/users/logout">Logout</a>
             </div>
        <% } %>
-    </nav>
+    </nav> -->
 
 
+
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/input.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+
+
+    <body class="font-['helvetica_now_display']">
+        <nav class="w-full flex justify-between px-5 py-3">
+            <h3 class="text-xl"><strong class="text-2xl">S</strong>catch</h3>
+            <% loggedin = typeof loggedin !== "undefined" ?  loggedin: true %>
+            <% if(loggedin){ %>
+            <div class="flex gap-5 items-center">
+                <a href="/shop">Shop</a>
+                <!-- Cart with hover message -->
+                <div class="relative group">
+                    <a href="/cart" class=" hover:underline">
+                        Cart
+                    </a>
+                    <div
+                        class="absolute left-0 mt-2 p-2 bg-gray-800 text-white text-sm rounded shadow-lg opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                        View your cart items
+                    </div>
+                </div>
+                <a href="#">My Account</a>
+                <a class="text-red-600" href="/users/logout">Logout</a>
+            </div>
+            <% } %>
+        </nav>
+    </body>

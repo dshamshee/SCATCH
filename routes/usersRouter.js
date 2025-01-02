@@ -10,7 +10,7 @@ router.get('/', function(req, res){
 
 router.post('/register', registerUser);
 
-router.post('/login', loginUser);
+router.get('/login', loginUser);
 
 router.get('/logout', logout);
 
