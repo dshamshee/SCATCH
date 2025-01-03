@@ -39,7 +39,7 @@ module.exports.registerUser = async function(req, res){
 
 module.exports.loginUser = async function(req, res){
     let { email, password } = req.query; // Extract query parameters
-    console.log(email, password);
+    // console.log(email, password);
 
     let user = await userModel.findOne({email: email})
     if(!user) return res.send("email or password incorrect");

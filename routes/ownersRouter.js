@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router(); 
 const ownerModel = require('../models/owner-model');
+const productModel = require('../models/product-model');
+const { generateToken } = require('../utils/generateToken');
 
 
 // These routes are only work when the project on development mode
@@ -37,13 +39,37 @@ if(process.env.NODE_ENV === "development"){ // It checks if the project is in de
 // _______________________________________________________________
 
 
-
-router.get('/admin', function(req, res){
+// Owner create products (yahi rout pahle /admin tha isko change kiye h hm)
+router.get('/create/products', function(req, res){
   let success = req.flash("Successs");
-  res.render("createproducts", {success}); // success is temporary isko dekh lena 
+  res.render("createproducts", {success, Showcart: false}); // success is temporary isko dekh lena 
+})
+
+
+router.get('/login',async function(req, res){
+  let {email, password} = req.query;
+  let owner = await ownerModel.findOne({email: email});
+  let products = await productModel.find();
+  if(owner){
+    let token = generateToken(owner);
+    res.cookie("token", token);
+    let success = req.flash("success");
+    res.render('admin', {products, success, Showcart: false});
+  }
 })
 
 
 
+router.get('/showallproducts', async function(req, res){
+  let products = await productModel.find();
+  let success = req.flash("success");
+  res.render('admin', {products, success, Showcart: false});
+})
+
+
+router.get('/deleteproduct/:productsid', async function(req, res){
+  let product = await productModel.deleteOne({_id: req.params.productsid});
+  res.redirect('/owners/showallproducts');
+})
 
 module.exports = router;
