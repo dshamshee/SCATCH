@@ -1,0 +1,68 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen"> -->
+
+
+    <%- include('./partials/header') %>
+
+    <div class="container bg-gray-100 flex items-center justify-center min-h-[90vh]">
+    
+        <!-- Profile Card -->
+        <div class="w-1/2 bg-white rounded-lg shadow-lg overflow-hidden">
+            <form action="/owner/update/profile" method="post">
+            <!-- Header Section -->
+            <div class="bg-gray-800 p-6 text-center">
+                <!-- <img src="<%= owner.picture %>" alt="Admin Profile" class="w-28 h-28 mx-auto rounded-full border-4 border-white shadow-lg object-cover"> -->
+                <a href="<%= owner.picture %>" target="_blank">
+                    <img src="<%= owner.picture %>" alt="Admin Profile" class="w-28 h-28 mx-auto rounded-full border-4 border-white shadow-lg object-cover hover:opacity-90 cursor-pointer">
+                </a>
+                
+                <h2 class="text-white text-2xl font-semibold mt-4"><input type="text" name="fullname" value="<%= owner.fullname %>" class="bg-transparent text-white text-center w-full rounded-lg border-0 "></h2>
+                <p class="text-gray-400">System Administrator</p>
+            </div>
+    
+            <!-- Details Section -->
+            <div class="p-6 space-y-4">
+                <ul class="space-y-4">
+                    <li class="flex items-center">
+                        <span class="w-1/3 text-gray-500 font-medium">Email:</span>
+                        <input type="email" name="email" value="<%= owner.email %>" class="w-2/3 text-gray-800 bg-gray-100 rounded-lg border">
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1/3 text-gray-500 font-medium">Phone:</span>
+                        <input type="number" name="phone" value="<%= owner.phone %>" class="w-2/3 text-gray-800 bg-gray-100 rounded-lg border">
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1/3 text-gray-500 font-medium">City:</span>
+                        <input type="text" name="city" value="<%= owner.city %>" class="w-2/3 text-gray-800 bg-gray-100 rounded-lg border">
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1/3 text-gray-500 font-medium">State:</span>
+                        <input type="text" name="state" value="<%= owner.state %>" class="w-2/3 text-gray-800 bg-gray-100 rounded-lg border">
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1/3 text-gray-500 font-medium">GST No:</span>
+                        <input type="text" name="gstin" value="<%= owner.gstin %>" class="w-2/3 text-gray-800 bg-gray-100 rounded-lg border">
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-1/3 text-gray-500 font-medium">Joining Date:</span>
+                        <input type="date" value="2018-01-15" class="w-2/3 text-gray-800 bg-gray-100 rounded-lg border focus:ring-2 focus:ring-blue-500">
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="bg-gray-100 p-4 text-center space-x-4">
+                <input type="submit" value="Save" class="bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+        </form>
+        </div>
+    
+    </div>
+    

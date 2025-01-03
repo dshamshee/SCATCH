@@ -12,11 +12,12 @@ router.get('/', async function(req, res){
         let error = req.flash("error");
        return res.render('index', {error, loggedin: false});
     }
+    
     try {
         let decoded = jwt.verify(req.cookies.token, process.env.JWT_KEY);
         // console.log(decoded.email);
         let user = await userModel.findOne({email: decoded.email});
-        let owner = await ownerModel.findOne({email: decoded.email})
+        let owner = await ownerModel.findOne({email: decoded.email});
         if(owner) return res.render('admin')
         else res.redirect('/shop');
     } catch (error) {
